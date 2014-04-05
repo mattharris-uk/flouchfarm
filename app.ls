@@ -20,7 +20,11 @@ app.use express.static path.join __dirname, 'public'
 
 app.use express.errorHandler! if 'development' is app.get 'env'
 
-app.get '/', routes.index
+app.get '/', routes.home.index
+app.get '/about', routes.about.index
+app.get '/booking', routes.booking.index
+app.get '/contact-us', routes.contact.index
+app.get '/faq', routes.faq.index
 
 http.createServer app .listen (app.get 'port'), ->
   console.log "Express server listening on port #{app.get 'port'}"

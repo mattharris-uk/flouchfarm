@@ -13,6 +13,7 @@
     "gulp-util": "^2.2.14",
     "gulp": "^3.6.0",
     "jade": "*",
-    "LiveScript": "^1.2.0"
+    "LiveScript": "^1.2.0",
+    "prelude-ls": "^1.1.0"
   }
 }

@@ -4,7 +4,32 @@ html
     title= title
     link(rel="stylesheet", href="/stylesheets/bootstrap.css")
     link(rel="stylesheet", href="/stylesheets/main.css")
+
+    <!--[if lt IE 9]>
+    script(src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js")
+    <![endif]-->
+
   body
+    nav.navbar.navbar-default(role='navigation')
+      .container-fluid
+          .navbar-header
+            button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a.navbar-brand(href='/') Flouch Farm
+          #bs-example-navbar-collapse-1.collapse.navbar-collapse
+            mixin nav(href, title)
+              li(class=url.indexOf(href) == 0 ? 'active' : '')
+                a(href=href)= title
+
+            ul.nav.navbar-nav
+              +nav('/about', 'About Us')
+              +nav('/booking', 'Booking')
+              +nav('/contact-us', 'Contact Us')
+              +nav('/faq', 'FAQ')
+
     block content
     script(src="//code.jquery.com/jquery-1.11.0.min.js")
     script(src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js")
