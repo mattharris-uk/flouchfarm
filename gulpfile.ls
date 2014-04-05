@@ -31,6 +31,6 @@ gulp.task 'clean-styles' ->
   gulp.src out.styles, read: false
   .pipe gulp-clean!
 
-gulp.task 'watch' ->
+gulp.task 'watch' ['default'] ->
   gulp.watch paths.scripts, ['LiveScript']
   gulp.watch paths.styles, ['styles']
