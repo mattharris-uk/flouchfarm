@@ -9,7 +9,7 @@ require! <[
 
 paths =
   scripts: <[app.ls ./routes/**/*.ls]>
-  styles: './src/styles/**/*.less'
+  styles: ['./src/styles/**/*.less', './src/bootstrap/bootstrap.less']
 out =
   styles: './public/stylesheets'
 

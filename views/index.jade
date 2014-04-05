@@ -3,3 +3,67 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+    #carousel-1.carousel.slide(data-ride='carousel')
+      ol.carousel-indicators
+        li.active(data-target='#carousel-1', data-slide-to='0')
+        li(data-target='#carousel-1', data-slide-to='1')
+        li(data-target='#carousel-1', data-slide-to='2')
+      .carousel-inner
+        .item.active
+          img(src='/images/IMG_3866_1.jpg', alt='...')
+          .carousel-caption
+            | Wall
+        .item
+          img(src='/images/IMG_3859_1.jpg', alt='...')
+          .carousel-caption
+            | Field
+        .item
+          img(src='/images/IMG_3868_1.jpg', alt='...')
+          .carousel-caption
+            | House
+      a.left.carousel-control(href='#carousel-1', data-slide='prev')
+        span.glyphicon.glyphicon-chevron-left
+      a.right.carousel-control(href='#carousel-1', data-slide='next')
+        span.glyphicon.glyphicon-chevron-right
+    #carousel-2.carousel.slide(data-ride='carousel')
+      ol.carousel-indicators
+        li.active(data-target='#carousel-2', data-slide-to='0')
+        li(data-target='#carousel-2', data-slide-to='1')
+        li(data-target='#carousel-2', data-slide-to='2')
+        li(data-target='#carousel-2', data-slide-to='3')
+        li(data-target='#carousel-2', data-slide-to='4')
+        li(data-target='#carousel-2', data-slide-to='5')
+        li(data-target='#carousel-2', data-slide-to='6')
+      .carousel-inner
+        .item.active
+          img(src='/images/IMG_3835_1.jpg', alt='...')
+          .carousel-caption
+            | Field 1
+        .item
+          img(src='/images/IMG_3841_1.jpg', alt='...')
+          .carousel-caption
+            | Field 2
+        .item
+          img(src='/images/IMG_3846_1.jpg', alt='...')
+          .carousel-caption
+            | Wall and Field
+        .item
+          img(src='/images/IMG_3850_1.jpg', alt='...')
+          .carousel-caption
+            | Sheep in Field
+        .item
+          img(src='/images/IMG_3867_1.jpg', alt='...')
+          .carousel-caption
+            | Path
+        .item
+          img(src='/images/IMG_3872_1.jpg', alt='...')
+          .carousel-caption
+            | Sheep 1
+        .item
+          img(src='/images/IMG_3873_1.jpg', alt='...')
+          .carousel-caption
+            | Sheep 2
+      a.left.carousel-control(href='#carousel-2', data-slide='prev')
+        span.glyphicon.glyphicon-chevron-left
+      a.right.carousel-control(href='#carousel-2', data-slide='next')
+        span.glyphicon.glyphicon-chevron-right
