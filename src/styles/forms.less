@@ -1,0 +1,14 @@
+// For accessibility we have a label but 'clip' it so it's not visible
+// See here: http://developer.yahoo.com/blogs/ydn/form-labels-visible-hidden-53548.html
+label.obscure {
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+	clip: rect(1px, 1px, 1px, 1px);
+}
+
+input {
+  margin: 5px;
+}
+fieldset .row {
+  margin: 5px;
+}

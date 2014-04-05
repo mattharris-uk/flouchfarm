@@ -2,3 +2,42 @@ extends layout
 
 block content
   h1= title
+
+  form(role='form')
+    mixin field(type, name, label)
+      label.obscure(for=name)=label
+      input.form-control(type=type, name=name, placeholder=label)
+
+    fieldset
+      legend Your details
+      .row
+        .form-inline.col-lg-6
+          .form-group
+            +field('text', 'first_name', 'First name')
+          .form-group
+            +field('text', 'last_name', 'Last name')
+      .row.form-group
+        .col-lg-6
+          +field('email', 'email', 'Email address')
+      .row.form-group
+        .col-lg-6
+          +field('tel', 'phone', 'Contact telephone')
+    fieldset
+      legend Order
+      .row.form-group
+        .col-lg-2
+          +field('number', 'parking_qty', 'Parking spaces')
+        .help-block.col-lg-4
+          | parking spaces on Sunday at £10 per space
+        .parking-total.col-lg-2 £0.00
+      .row.form-group
+        .col-lg-2
+          +field('number', 'pitch_qty', 'Camping pitches')
+        .help-block.col-lg-4
+          | pitches for 3 nights (4th, 5th, 6th July 2014) at £150 per pitch
+        .pitch-total.col-lg-2 £0.00
+    fieldset
+      legend Summary
+      .row.form-group
+        .col-lg-4
+          button.btn.btn-default(type='submit') Pay Now
