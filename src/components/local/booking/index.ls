@@ -1,10 +1,18 @@
 window <<< require \prelude-ls
 
 module.exports = (selector) ->
+  $form = $ selector
+
   handler = StripeCheckout.configure do
-    key: 'pk_test_6pRNASCoBOKtIshFeQd4XMUh'
+    key: 'pk_test_ksQy2DtmLvSzFogm10ZlccRT'
     image: '/images/IMG_3866_2.jpg'
     token: (token, args) ->
+      $ '<input />'
+      .attr 'type', 'hidden'
+      .attr 'name', 'token'
+      .attr 'value', token.id
+      .appendTo $form
+      $form.submit!
 
   data = {}
   $ '.pay-now button' .click ->
@@ -22,7 +30,6 @@ module.exports = (selector) ->
       email: email
     it.preventDefault();
 
-  $form = $ selector
   $form.find 'input' |> each ->
     name = $ it .attr 'name'
     if name

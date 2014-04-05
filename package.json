@@ -6,6 +6,7 @@
     "start": "node app.js"
   },
   "dependencies": {
+    "bluebird": "^1.2.1",
     "component-jade": "0.5.0",
     "component-livescript": "^0.1.1",
     "component": "0.19.8",
@@ -19,6 +20,7 @@
     "gulp": "^3.6.0",
     "jade": "*",
     "LiveScript": "^1.2.0",
-    "prelude-ls": "^1.1.0"
+    "prelude-ls": "^1.1.0",
+    "stripe": "^2.4.4"
   }
 }
