@@ -1,7 +1,8 @@
 {
   "name": "booking",
   "dependencies": {
-    "component/jquery": "*"
+    "component/jquery": "*",
+    "redbadger/prelude-ls": "*"
   },
   "main": "index.ls",
   "scripts": [

@@ -7,6 +7,7 @@
     "local"
   ],
   "dependencies": {
-    "component/jquery": "*"
+    "component/jquery": "*",
+    "redbadger/prelude-ls": "*"
   }
 }

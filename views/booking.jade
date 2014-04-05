@@ -3,7 +3,7 @@ extends layout
 block content
   h1= title
 
-  form(role='form')
+  form.booking(role='form' action='/booking/charge' method="POST")
     mixin field(type, name, label)
       label.obscure(for=name)=label
       input.form-control(type=type, name=name, placeholder=label)
@@ -13,9 +13,9 @@ block content
       .row
         .form-inline.col-lg-6
           .form-group
-            +field('text', 'first_name', 'First name')
+            +field('text', 'first-name', 'First name')
           .form-group
-            +field('text', 'last_name', 'Last name')
+            +field('text', 'last-name', 'Last name')
       .row.form-group
         .col-lg-6
           +field('email', 'email', 'Email address')
@@ -24,20 +24,18 @@ block content
           +field('tel', 'phone', 'Contact telephone')
     fieldset
       legend Order
-      .row.form-group
-        .col-lg-2
-          +field('number', 'parking_qty', 'Parking spaces')
-        .help-block.col-lg-4
-          | parking spaces on Sunday at £10 per space
-        .parking-total.col-lg-2 £0.00
-      .row.form-group
-        .col-lg-2
-          +field('number', 'pitch_qty', 'Camping pitches')
-        .help-block.col-lg-4
-          | pitches for 3 nights (4th, 5th, 6th July 2014) at £150 per pitch
-        .pitch-total.col-lg-2 £0.00
-    fieldset
-      legend Summary
-      .row.form-group
-        .col-lg-4
-          button.btn.btn-default(type='submit') Pay Now
+      each item in items
+        .row.form-group
+          .col-lg-3.col-sm-5
+            +field('number', item.type + "-qty", "Number of "+ item.plural)
+          .help-block.col-lg-2 #{item.plural} at £#{item.price} per #{item.singular}
+          .col-lg-1.sub-total
+            div(class="#{item.type}-total" data-price=item.price) £0.00
+    .row
+      .col-lg-6.pay-now
+        button.btn.btn-default Pay with card
+
+block scripts
+  script(src="https://checkout.stripe.com/checkout.js")
+  script.
+    require('booking')('form');

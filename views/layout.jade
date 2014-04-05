@@ -1,6 +1,7 @@
 doctype html
 html
   head
+    meta(name="viewport" content="initial-scale=1")
     title= title
     link(rel="stylesheet", href="/stylesheets/bootstrap.css")
     link(rel="stylesheet", href="/stylesheets/main.css")
@@ -21,7 +22,7 @@ html
             a.navbar-brand(href='/') Flouch Farm
           #bs-example-navbar-collapse-1.collapse.navbar-collapse
             mixin nav(href, title)
-              li(class=url.indexOf(href) == 0 ? 'active' : '')
+              li(class=url && url.indexOf(href) == 0 ? 'active' : '')
                 a(href=href)= title
 
             ul.nav.navbar-nav

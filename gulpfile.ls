@@ -14,7 +14,7 @@ require! <[
 paths =
   scripts: <[app.ls ./routes/**/*.ls]>
   styles: ['./src/styles/**/*.less' './src/bootstrap/bootstrap.less']
-  components: ['./src/components/component.json' './src/components/local']
+  components: ['./src/components/component.json' './src/components/local/**/*']
   component-json: './src/components/component.json'
 out =
   styles: './public/stylesheets'
