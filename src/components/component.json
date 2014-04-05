@@ -1,0 +1,12 @@
+{
+  "name": "main",
+  "local": [
+    "booking"
+  ],
+  "paths": [
+    "local"
+  ],
+  "dependencies": {
+    "component/jquery": "*"
+  }
+}

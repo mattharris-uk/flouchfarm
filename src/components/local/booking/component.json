@@ -1,0 +1,10 @@
+{
+  "name": "booking",
+  "dependencies": {
+    "component/jquery": "*"
+  },
+  "main": "index.ls",
+  "scripts": [
+    "index.ls"
+  ]
+}

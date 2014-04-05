@@ -6,10 +6,15 @@
     "start": "node app.js"
   },
   "dependencies": {
+    "component-jade": "0.5.0",
+    "component-livescript": "^0.1.1",
+    "component": "0.19.8",
     "express": "3.5.1",
     "gulp-clean": "^0.2.4",
+    "gulp-component": "^0.1.8",
     "gulp-less": "^1.2.3",
     "gulp-livescript": "^0.2.1",
+    "gulp-replace": "^0.2.0",
     "gulp-util": "^2.2.14",
     "gulp": "^3.6.0",
     "jade": "*",
