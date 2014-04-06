@@ -1,11 +1,11 @@
-extends layout
+extends ../layout
 
 block content
   h1= title
 
   form.booking(role='form' action='/booking/charge' method="POST")
     mixin field(type, name, label)
-      label.obscure(for=name)=label
+      label.obscure(for=name)= label
       input.form-control(type=type, name=name, placeholder=label)
 
     fieldset
@@ -22,7 +22,7 @@ block content
       .row.form-group
         .col-lg-6
           +field('tel', 'phone', 'Contact telephone')
-    fieldset
+    fieldset= var1
       legend Order
       each item in items
         .row.form-group

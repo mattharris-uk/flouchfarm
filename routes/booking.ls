@@ -6,7 +6,7 @@ require! <[
 stripe = stripe process.env.stripe_key
 
 exports.index = (req, res) ->
-  res.render 'booking' do
+  res.render 'booking/book' do
     title: 'Booking'
     url: req.path
     items:
@@ -22,7 +22,6 @@ exports.index = (req, res) ->
         price: 150
 
 exports.charge = (req, res) ->
-  console.log JSON.stringify req.body
   amount = (req.body['parking-qty'] - 0) * 1000p + (req.body['camping-qty'] - 0) * 15000p
   bluebird.resolve stripe.charges.create do
     amount: amount
@@ -33,10 +32,13 @@ exports.charge = (req, res) ->
     res.redirect '/booking/thanks'
   .catch ->
     console.log JSON.stringify it
-    if it.type is 'StripeCardError'
-      res.redirect '/booking/declined'
-    else
-      res.redirect '/booking/error'
+    res.redirect '/booking/error'
 
 exports.thanks = (req, res) ->
-  res.render 'thanks'
+  res.render 'booking/thanks'
+
+exports.declined = (req, res) ->
+  res.render 'booking/declined'
+
+exports.error = (req, res) ->
+  res.render 'booking/error'

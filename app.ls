@@ -31,6 +31,7 @@ app.get '/faq' routes.faq.index
 app.get '/booking' routes.booking.index
 app.post '/booking/charge' routes.booking.charge
 app.get '/booking/thanks' routes.booking.thanks
+app.get '/booking/error' routes.booking.error
 
 http.createServer app .listen (app.get 'port'), ->
   console.log "Express server listening on port #{app.get 'port'}"
