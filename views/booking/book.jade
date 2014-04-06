@@ -4,9 +4,9 @@ block content
   h1= title
 
   form.booking(role='form' action='/booking/charge' method="POST")
-    mixin field(type, name, label)
+    mixin field(type, name, label, value)
       label.obscure(for=name)= label
-      input.form-control(type=type, name=name, placeholder=label)
+      input.form-control(type=type, name=name, placeholder=label, value=value)
 
     fieldset
       legend Your details
@@ -27,7 +27,7 @@ block content
       each item in items
         .row.form-group
           .col-lg-3.col-sm-5
-            +field('number', item.type + "-qty", "Number of "+ item.plural)
+            +field('number', item.type + "-qty", "Number of "+ item.plural, 0)
           .help-block.col-lg-2 #{item.plural} at £#{item.price} per #{item.singular}
           .col-lg-1.sub-total
             div(class="#{item.type}-total" data-price=item.price) £0.00
@@ -38,4 +38,4 @@ block content
 block scripts
   script(src="https://checkout.stripe.com/checkout.js")
   script.
-    require('booking')('form');
+    $(function(){require('booking')('form');});

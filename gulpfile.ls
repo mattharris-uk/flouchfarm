@@ -18,7 +18,7 @@ paths =
   component-json: './src/components/component.json'
 out =
   styles: './public/stylesheets'
-  components: './public/javascripts/components'
+  components: './public/javascripts'
 
 gulp.task 'default' ['LiveScript' 'styles' 'components']
 

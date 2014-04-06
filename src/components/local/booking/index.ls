@@ -41,11 +41,14 @@ module.exports = (selector) ->
         $total = $group.find ".#{sku}-total"
         $qty.on 'change paste keyup' ->
           qty = $qty.val! - 0
-          price = $total.attr 'data-price'
-          sub-total = qty * price * 100
-          display-amount = "£#{sub-total / 100}"
-          $total.text display-amount
-          data[sku] =
-            desc: "#qty #sku"
-            qty: qty
-            total: sub-total
+          if qty < 0
+            $qty.val 0
+          else
+            price = $total.attr 'data-price'
+            sub-total = qty * price * 100
+            display-amount = "£#{sub-total / 100}"
+            $total.text display-amount
+            data[sku] =
+              desc: "#qty #sku"
+              qty: qty
+              total: sub-total
