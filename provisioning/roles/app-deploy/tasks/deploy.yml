@@ -1,0 +1,68 @@
+%YAML 1.2
+---
+- name: get current sha1
+  local_action: command git rev-parse HEAD
+  register: sha1_out
+  tags: deploy
+
+- name: create the build folder
+  file: "path={{path}}/releases/{{sha1_out.stdout}} state=directory mode=0775 owner=www group=www-data"
+  sudo: yes
+  tags: deploy
+
+- name: pack things up
+  local_action: "shell tar -czf ~/build.tgz --exclude='.git' --exclude='node_modules' ./ chdir={{src_path}}"
+  tags: deploy
+
+- name: upload
+  copy: "src=~/build.tgz dest={{path}}/releases/{{sha1_out.stdout}}/build.tgz"
+  tags: deploy
+
+- name: unpack
+  command: "tar -pxzf build.tgz chdir={{path}}/releases/{{sha1_out.stdout}}/"
+  sudo: yes
+  notify: restart app
+  tags: deploy
+
+- name: remove archive
+  file: "path={{path}}/releases/{{sha1_out.stdout}}/build.tgz state=absent"
+  sudo: yes
+  tags: deploy
+
+- name: remove local archive
+  local_action: file path=~/build.tgz state=absent
+  tags: deploy
+
+- name: chown the build to the ansible user
+  command: "chown -R {{user}} {{path}}/releases/{{sha1_out.stdout}}"
+  sudo: yes
+  tags: deploy
+
+- name: switch npm registry
+  shell: "npm set registry http://registry.npmjs.org/"
+  tags: deploy
+
+- name: install dependencies
+  shell: "npm install chdir={{path}}/releases/{{sha1_out.stdout}}"
+  tags: deploy
+
+- name: update symlink
+  file: "path={{path}}/current state=link src={{path}}/releases/{{sha1_out.stdout}} mode=0755 owner=nginx group=www-data"
+  sudo: yes
+  notify: restart app
+  tags: deploy
+
+- name: chown all to nginx again
+  command: "chown -R nginx {{path}}"
+  sudo: yes
+  tags: deploy
+
+- name: chgrp all to www-data again
+  command: "chgrp -R www-data {{path}}"
+  sudo: yes
+  tags: deploy
+
+- name: keep just 5 newest releases
+  shell: "(ls -t | head -n 5; ls)|sort|uniq -u|xargs rm -rf chdir={{path}}/releases/"
+  sudo: yes
+  tags: deploy

@@ -1,0 +1,6 @@
+%YAML 1.2
+---
+- include: nginx.yml
+- include: redis.yml
+- include: elasticsearch.yml
+- include: www.yml

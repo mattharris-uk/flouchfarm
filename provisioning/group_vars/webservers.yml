@@ -1,0 +1,12 @@
+proxy_hosts:
+  - name: www.flouchfarm.co.uk
+    port: 3000
+  - name: flouchfarm.co.uk
+    port: 3000
+
+service_name: flouch
+path: /var/www/flouchfarm
+log: /var/log/flouchfarm.log
+git_user: "Matt Harris"
+git_email: "mattharris_uk@yahoo.com"
+git_client_home: "/var/www/"

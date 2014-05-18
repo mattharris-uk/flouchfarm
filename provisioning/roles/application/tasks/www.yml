@@ -1,0 +1,35 @@
+%YAML 1.2
+---
+- name: vagrant user
+  user: name=vagrant group=www-data
+  sudo: yes
+  tags: www
+
+- name: ubuntu user
+  user: 'name=ubuntu groups=www-data,ubuntu,adm,sudo,netdev'
+  sudo: yes
+  tags: www
+
+- name: Create www user
+  user: name=www group=www-data
+  sudo: yes
+  tags: www
+
+- name: create deployment directory
+  file: state=directory
+        path=/var/www/flouchfarm/
+        owner=www
+        group=www-data
+        mode=770
+  sudo: yes
+  tags: www
+
+- name: create log directories
+  file: state=directory
+        path=/var/log/www
+        owner=www
+        group=www-data
+        mode=770
+  with_items: hosts
+  sudo: yes
+  tags: www

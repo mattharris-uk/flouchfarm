@@ -1,0 +1,4 @@
+%YAML 1.2
+---
+- include: deploy.yml
+- include: service.yml

@@ -1,0 +1,8 @@
+%YAML 1.2
+---
+- hosts: webservers
+  user: "{{user}}"
+  roles:
+    - role: common
+    - role: application
+    - role: app-deploy

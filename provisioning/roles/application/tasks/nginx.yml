@@ -1,0 +1,71 @@
+%YAML 1.2
+---
+- name: Create nginx user
+  user: name=nginx group=www-data
+  sudo: yes
+  tags: nginx
+
+- name: log dir
+  file: path=/var/log/nginx mode=750 state=directory owner=nginx
+  sudo: yes
+  tags: nginx
+
+- name: Install Dependencies
+  apt: pkg={{item}}
+  with_items:
+    - python-software-properties
+    - software-properties-common
+  sudo: yes
+  tags: nginx
+
+- name: Add Nginx Repository
+  apt_repository: repo=ppa:nginx/stable
+  sudo: yes
+  tags: nginx
+
+- name: Install Nginx
+  apt: pkg=nginx-full
+  sudo: yes
+  tags: nginx
+
+- name: Copy nginx config
+  copy:
+    src=nginx.conf
+    dest=/etc/nginx/conf.d/default.conf
+  sudo: yes
+  tags: nginx
+  notify: restart nginx
+
+- name: Make proxy sites available
+  template:
+    src=nginx-proxy-vhost.conf
+    dest=/etc/nginx/sites-available/{{item.name}}
+  with_items: proxy_hosts
+  sudo: yes
+  notify: restart nginx
+  tags:
+    - nginx
+    - vhost
+
+- name: Enable sites
+  file:
+    state=link
+    src=/etc/nginx/sites-available/{{item.name}}
+    path=/etc/nginx/sites-enabled/{{item.name}}
+    owner=nginx
+  with_items: proxy_hosts
+  sudo: yes
+  notify: restart nginx
+  tags:
+    - nginx
+    - vhost
+
+- name: Set /var/www/ permissions
+  file:
+    path=/var/www/
+    mode=0770
+    state=directory
+    owner=nginx
+    group=www-data
+  sudo: yes
+  tags: nginx

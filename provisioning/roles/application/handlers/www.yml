@@ -1,0 +1,5 @@
+%YAML 1.2
+---
+- name: restart www
+  shell: stop www; start www
+  sudo: yes

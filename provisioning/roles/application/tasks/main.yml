@@ -1,0 +1,5 @@
+%YAML 1.2
+---
+- include: nginx.yml
+- include: node.yml
+- include: www.yml

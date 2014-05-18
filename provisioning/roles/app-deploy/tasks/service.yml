@@ -1,0 +1,15 @@
+%YAML 1.2
+---
+- name: application upstart scripts
+  template:
+    src=upstart.txt
+    dest=/etc/init/{{service_name}}.conf
+  sudo: yes
+  notify:
+    - restart app
+  tags: www
+
+- name: www log dir
+  file: path=/var/log/www mode=770 state=directory group=www-data
+  sudo: yes
+  tags: www
