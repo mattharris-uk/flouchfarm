@@ -2,6 +2,7 @@ doctype html
 html
   head
     meta(name="viewport" content="initial-scale=1")
+    meta(name="keywords" content="Tour de France, Grand Depart, Camping, yorkshire, le tour, tour sheffield, camp, overnight stay, Stage 2, Flouch, Langsett, Bradfield, Holme Moss, Woodhead Pass, camp adjacent to route, next to route, along route, family friendly, family run")
     title= title
     link(rel="stylesheet", href="/stylesheets/bootstrap.css")
     link(rel="stylesheet", href="/stylesheets/main.css")
@@ -11,7 +12,13 @@ html
     <![endif]-->
 
   body
-    nav.navbar.navbar-default(role='navigation')
+    .background
+      img.col-md-12(src='/images/background_1.jpg', alt='...')
+    .headerStripe
+      span.col-md-offset-1.farmName Flouch Farm
+      span.col-md-offset-1.url www.flouchfarm.co.uk
+      img.col-md-3.col-md-offset-8.title-img(src='/images/flouch_wide.jpg', alt='...')
+    nav.navbar.navbar-default.col-md-10.col-md-offset-1(role='navigation', position='absolute')
       .container-fluid
           .navbar-header
             button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
@@ -19,18 +26,18 @@ html
               span.icon-bar
               span.icon-bar
               span.icon-bar
-            a.navbar-brand(href='/') Flouch Farm
+            a.navbar-brand(href='/') Home
           #bs-example-navbar-collapse-1.collapse.navbar-collapse
             mixin nav(href, title)
               li(class=url && url.indexOf(href) == 0 ? 'active' : '')
                 a(href=href)= title
 
             ul.nav.navbar-nav
-              +nav('/about', 'About Us')
+              +nav('/camping', 'Camping')
               +nav('/booking', 'Booking')
               +nav('/contact-us', 'Contact Us')
               +nav('/faq', 'FAQ')
-
+    img.paymemt(src='/images/payment.jpg', alt='...')
     block content
     script(src="/javascripts/main.js")
     script.

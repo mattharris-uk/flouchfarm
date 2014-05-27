@@ -1,39 +1,49 @@
 extends ../layout
 
 block content
-  h1= title
+  .main.col-md-10.col-md-offset-1
+    //- .row
+    //-   img.col-md-6.col-md-offset-3.title-img(src='/images/flouch_wide.jpg', alt='...')
+    //-   .col-md-2.address
+    //-     .title
+    //-       span address line 1
+    //-     .title
+    //-       span address line 2
+    //-     .title
+    //-       span address line 3
+    .row.white-bg
 
-  form.booking(role='form' action='/booking/charge' method="POST")
-    mixin field(type, name, label, value)
-      label.obscure(for=name)= label
-      input.form-control(type=type, name=name, placeholder=label, value=value)
+      form.booking(role='form' action='/booking/charge' method="POST")
+        mixin field(type, name, label, value)
+          label.obscure(for=name)= label
+          input.form-control(type=type, name=name, placeholder=label, value=value)
 
-    fieldset
-      legend Your details
-      .row
-        .form-inline.col-lg-6
-          .form-group
-            +field('text', 'first-name', 'First name')
-          .form-group
-            +field('text', 'last-name', 'Last name')
-      .row.form-group
-        .col-lg-6
-          +field('email', 'email', 'Email address')
-      .row.form-group
-        .col-lg-6
-          +field('tel', 'phone', 'Contact telephone')
-    fieldset= var1
-      legend Order
-      each item in items
-        .row.form-group
-          .col-lg-3.col-sm-5
-            +field('number', item.type + "-qty", "Number of "+ item.plural, 0)
-          .help-block.col-lg-2 #{item.plural} at £#{item.price} per #{item.singular}
-          .col-lg-1.sub-total
-            div(class="#{item.type}-total" data-price=item.price) £0.00
-    .row
-      .col-lg-6.pay-now
-        button.btn.btn-default Pay with card
+        fieldset
+          legend Your details
+          .row
+            .form-inline.col-lg-6
+              .form-group
+                +field('text', 'first-name', 'First name')
+              .form-group
+                +field('text', 'last-name', 'Last name')
+          .row.form-group
+            .col-lg-6
+              +field('email', 'email', 'Email address')
+          .row.form-group
+            .col-lg-6
+              +field('tel', 'phone', 'Contact telephone')
+        fieldset= var1
+          legend Order
+          each item in items
+            .row.form-group
+              .col-lg-3.col-sm-5
+                +field('number', item.type + "-qty", "Number of "+ item.plural, 0)
+              .help-block.col-lg-2 #{item.plural} at £#{item.price} per #{item.singular}
+              .col-lg-1.sub-total
+                div(class="#{item.type}-total" data-price=item.price) £0.00
+        .row
+          .col-lg-6.pay-now
+            button.btn.btn-default Pay with card
 
 block scripts
   script(src="https://checkout.stripe.com/checkout.js")

@@ -1,69 +1,60 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-    #carousel-1.carousel.slide(data-ride='carousel')
-      ol.carousel-indicators
-        li.active(data-target='#carousel-1', data-slide-to='0')
-        li(data-target='#carousel-1', data-slide-to='1')
-        li(data-target='#carousel-1', data-slide-to='2')
-      .carousel-inner
-        .item.active
-          img(src='/images/IMG_3866_1.jpg', alt='...')
-          .carousel-caption
-            | Wall
-        .item
-          img(src='/images/IMG_3859_1.jpg', alt='...')
-          .carousel-caption
-            | Field
-        .item
-          img(src='/images/IMG_3868_1.jpg', alt='...')
-          .carousel-caption
-            | House
-      a.left.carousel-control(href='#carousel-1', data-slide='prev')
-        span.glyphicon.glyphicon-chevron-left
-      a.right.carousel-control(href='#carousel-1', data-slide='next')
-        span.glyphicon.glyphicon-chevron-right
-    #carousel-2.carousel.slide(data-ride='carousel')
-      ol.carousel-indicators
-        li.active(data-target='#carousel-2', data-slide-to='0')
-        li(data-target='#carousel-2', data-slide-to='1')
-        li(data-target='#carousel-2', data-slide-to='2')
-        li(data-target='#carousel-2', data-slide-to='3')
-        li(data-target='#carousel-2', data-slide-to='4')
-        li(data-target='#carousel-2', data-slide-to='5')
-        li(data-target='#carousel-2', data-slide-to='6')
-      .carousel-inner
-        .item.active
-          img(src='/images/IMG_3835_1.jpg', alt='...')
-          .carousel-caption
-            | Field 1
-        .item
-          img(src='/images/IMG_3841_1.jpg', alt='...')
-          .carousel-caption
-            | Field 2
-        .item
-          img(src='/images/IMG_3846_1.jpg', alt='...')
-          .carousel-caption
-            | Wall and Field
-        .item
-          img(src='/images/IMG_3850_1.jpg', alt='...')
-          .carousel-caption
-            | Sheep in Field
-        .item
-          img(src='/images/IMG_3867_1.jpg', alt='...')
-          .carousel-caption
-            | Path
-        .item
-          img(src='/images/IMG_3872_1.jpg', alt='...')
-          .carousel-caption
-            | Sheep 1
-        .item
-          img(src='/images/IMG_3873_1.jpg', alt='...')
-          .carousel-caption
-            | Sheep 2
-      a.left.carousel-control(href='#carousel-2', data-slide='prev')
-        span.glyphicon.glyphicon-chevron-left
-      a.right.carousel-control(href='#carousel-2', data-slide='next')
-        span.glyphicon.glyphicon-chevron-right
+  //h1= title
+  .main.col-md-10.col-md-offset-1
+    .row.white-bg-1
+      span.col-md-5.description.em Set in beautiful countryside near to Snake Pass in Yorkshire, Flouch Farm welcomes you to come and stay with us during the upcoming Tour de France Grand Depart beginning Saturday 5th July 2014
+      img.col-md-3.image-1(src='/images/IMG_3868_1.jpg', alt='...')
+      .col-md-1
+        .row
+          img.sm-img-1(src='/images/IMG_3850_1.jpg', alt='...')
+        .row
+          img.sm-img-1(src='/images/IMG_3872_1.jpg', alt='...')
+        .row
+          img.sm-img-1(src='/images/IMG_3835_1.jpg', alt='...')
+      img.col-md-3.image-1(src='/images/IMG_3859_1.jpg', alt='...')
+    .spacer-1
+    .row.white-bg
+      .col-md-1
+        .row
+          img.sm-img(src='/images/2014.jpg', alt='...')
+        .row
+          img.sm-img(src='/images/2014_2.jpg', alt='...')
+        .row
+          img.sm-img(src='/images/2014_3.jpg', alt='...')
+        .row
+          img.sm-img(src='/images/2014_4.jpg', alt='...')
+        .row
+          img.sm-img(src='/images/2014_5.jpg', alt='...')
+        .row
+          img.sm-img(src='/images/2014_6.jpg', alt='...')
+      img.col-md-3.image-2(src='/images/IMG_3892_1.jpg', alt='...')
+      .col-md-5
+        .description
+          img.img-letour(src='/images/letour.jpg', alt='...')
+          span.feature-title <b>Le Tour de France 2014 - Camping</b>
+          img.icons(src='/images/icons.jpg', alt='...')
+        ul.list
+          li 
+            span.feature Big screen tv coverage of the remainder of the tour in the comfort of our new, dry barn
+          li
+            span.feature Saturday night entertainment
+          li
+            span.feature Evening bar
+          li
+            span.feature Hot/cold food and drinks
+          li
+            span.feature Secure bike storage
+          li 
+            span.feature Toilet and Hot Shower facilities
+          li
+            span.feature Elsan point
+        .buttons
+          button.btn.btn-info(type='button', data-action="moreinfo") More info
+          button.btn.btn-info(type='button',  data-action="booknow") Book now!
+      div
+        img.col-md-3.image-4(src='/images/map_2.jpg', alt='...')
+      
+
+  

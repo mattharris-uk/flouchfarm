@@ -24,7 +24,7 @@ if is-dev
   app.locals.pretty = true
 
 app.get '/' routes.home.index
-app.get '/about' routes.about.index
+app.get '/camping' routes.camping.index
 app.get '/contact-us' routes.contact.index
 app.get '/faq' routes.faq.index
 
