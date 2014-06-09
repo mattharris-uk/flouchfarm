@@ -4,7 +4,7 @@ module.exports = (selector) ->
   $form = $ selector
 
   handler = StripeCheckout.configure do
-    key: 'pk_test_ksQy2DtmLvSzFogm10ZlccRT'
+    key: 'pk_test_MocqmE2ZqFETB1XeO0hugjIE'
     image: '/images/IMG_3866_2.jpg'
     token: (token, args) ->
       $ '<input />'
@@ -37,6 +37,10 @@ module.exports = (selector) ->
       alert("Please enter an email address")
       it.preventDefault();
       return
+    if reg == ""
+      alert('Please enter one or more vehicle registration numbers')
+      it.preventDefault();
+      return
     desc = []
     amount = 0;
     for key, val of data
@@ -51,10 +55,6 @@ module.exports = (selector) ->
     reg = $form.find 'input[name="registration"]' .val!
     str = (desc * ' & ') + ' Registration: ' + reg
 
-    if ((str.toLowerCase().indexOf('parking') != -1) && reg == "")
-      alert('Please enter a vehicle registration number')
-      it.preventDefault();
-      return
     handler.open do
       name: 'Flouch Farm'
       description: str

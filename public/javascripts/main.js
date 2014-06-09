@@ -11100,7 +11100,7 @@ module.exports = function(selector){
   var $form, handler, data;
   $form = $(selector);
   handler = StripeCheckout.configure({
-    key: 'pk_test_ksQy2DtmLvSzFogm10ZlccRT',
+    key: 'pk_test_MocqmE2ZqFETB1XeO0hugjIE',
     image: '/images/IMG_3866_2.jpg',
     token: function(token, args){
       $('<input />').attr('type', 'hidden').attr('name', 'token').attr('value', token.id).appendTo($form);
@@ -11135,6 +11135,11 @@ module.exports = function(selector){
       it.preventDefault();
       return;
     }
+    if (reg === "") {
+      alert('Please enter one or more vehicle registration numbers');
+      it.preventDefault();
+      return;
+    }
     desc = [];
     amount = 0;
     for (key in ref$ = data) {
@@ -11149,11 +11154,6 @@ module.exports = function(selector){
     }
     reg = $form.find('input[name="registration"]').val();
     str = join$.call(desc, ' & ') + ' Registration: ' + reg;
-    if (str.toLowerCase().indexOf('parking') !== -1 && reg === "") {
-      alert('Please enter a vehicle registration number');
-      it.preventDefault();
-      return;
-    }
     handler.open({
       name: 'Flouch Farm',
       description: str,
