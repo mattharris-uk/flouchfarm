@@ -28,6 +28,7 @@ app.get('/booking', routes.booking.index);
 app.post('/booking/charge', routes.booking.charge);
 app.get('/booking/thanks', routes.booking.thanks);
 app.get('/booking/error', routes.booking.error);
+app.get('/booking/declined', routes.booking.declined);
 http.createServer(app).listen(app.get('port'), function(){
   return console.log("Express server listening on port " + app.get('port'));
 });

@@ -61,11 +61,9 @@ exports.charge = (req, res) ->
     description: JSON.stringify req.body
   .then ->
     res.redirect '/booking/thanks'
-    it.preventDefault();
   .catch ->
     console.log JSON.stringify it
     res.redirect '/booking/error'
-    it.preventDefault();
 
 
 exports.thanks = (req, res) ->
