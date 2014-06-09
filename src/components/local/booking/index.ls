@@ -16,21 +16,55 @@ module.exports = (selector) ->
 
   data = {}
   $ '.pay-now button' .click ->
+    first = $form.find 'input[name="first-name"]' .val!
+    last = $form.find 'input[name="last-name"]' .val!
+    phone = $form.find 'input[name="phone"]' .val!
+    registration = $form.find 'input[name="registration"]' .val!
+    email = $form.find 'input[name="email"]' .val!
+    if first == ""
+      alert("Please enter a first name")
+      it.preventDefault();
+      return
+    if last == ""
+      alert("Please enter a surname")
+      it.preventDefault();
+      return
+    if phone == ""
+      alert("Please enter a contact phone number")
+      it.preventDefault();
+      return
+    if phone == ""
+      alert("Please enter an email address")
+      it.preventDefault();
+      return
     desc = []
     amount = 0;
     for key, val of data
       desc.push val.desc
       amount += val.total
-    email = $form.find 'input[name="email"]' .val!
+
+    if amount == 0
+      alert("Please select a reservation")
+      it.preventDefault();
+      return
+
+    reg = $form.find 'input[name="registration"]' .val!
+    str = (desc * ' & ') + ' Registration: ' + reg
+
+    if ((str.toLowerCase().indexOf('parking') != -1) && reg == "")
+      alert('Please enter a vehicle registration number')
+      it.preventDefault();
+      return
     handler.open do
       name: 'Flouch Farm'
-      description: desc * ' & '
+      description: str
       amount: amount
       currency: 'GBP'
       email: email
     it.preventDefault();
 
   $form.find 'input' |> each ->
+    desc = $ it .attr 'placeholder'
     name = $ it .attr 'name'
     if name
       split = name / '-'
@@ -48,7 +82,11 @@ module.exports = (selector) ->
             sub-total = qty * price * 100
             display-amount = "£#{sub-total / 100}"
             $total.text display-amount
-            data[sku] =
-              desc: "#qty #sku"
-              qty: qty
-              total: sub-total
+            if qty == 0
+              delete data[desc];
+
+            if qty != 0
+              data[desc] =
+                desc: "#desc"
+                qty: qty
+                total: sub-total

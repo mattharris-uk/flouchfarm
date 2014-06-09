@@ -11,9 +11,8 @@ block content
     //-       span address line 2
     //-     .title
     //-       span address line 3
-    .row.white-bg
-
-      form.booking(role='form' action='/booking/charge' method="POST")
+    .row
+      form.col-md-6.booking.white-bg(role='form' action='/booking/charge' method="POST")
         mixin field(type, name, label, value)
           label.obscure(for=name)= label
           input.form-control(type=type, name=name, placeholder=label, value=value)
@@ -32,18 +31,25 @@ block content
           .row.form-group
             .col-lg-6
               +field('tel', 'phone', 'Contact telephone')
+          .row.form-group
+            .col-lg-6
+              +field('text', 'registration', 'Car Registration Number')
         fieldset= var1
           legend Order
           each item in items
             .row.form-group
               .col-lg-3.col-sm-5
-                +field('number', item.type + "-qty", "Number of "+ item.plural, 0)
-              .help-block.col-lg-2 #{item.plural} at £#{item.price} per #{item.singular}
+                +field('number', item.type + "-qty", item.description, 0)
+              //- .help-block.col-lg-5 #{item.plural} at £#{item.price} per #{item.singular}
+              .help-block.col-lg-5 #{item.description}
+              .help-block.col-lg-1 £#{item.price}
               .col-lg-1.sub-total
                 div(class="#{item.type}-total" data-price=item.price) £0.00
         .row
-          .col-lg-6.pay-now
+          .col-lg-11.pay-now
             button.btn.btn-default Pay with card
+      .col-md-6
+          img.col-md-8.col-md-offset-2.camping-image-1(src='/images/reservation.jpg', alt='...')
 
 block scripts
   script(src="https://checkout.stripe.com/checkout.js")

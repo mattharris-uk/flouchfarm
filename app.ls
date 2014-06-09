@@ -25,6 +25,7 @@ if is-dev
 
 app.get '/' routes.home.index
 app.get '/camping' routes.camping.index
+app.get '/carparking' routes.carparking.index
 app.get '/contact-us' routes.contact.index
 app.get '/faq' routes.faq.index
 

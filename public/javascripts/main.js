@@ -11109,7 +11109,32 @@ module.exports = function(selector){
   });
   data = {};
   $('.pay-now button').click(function(it){
-    var desc, amount, key, ref$, val, email;
+    var first, last, phone, registration, email, desc, amount, key, ref$, val, reg, str;
+    first = $form.find('input[name="first-name"]').val();
+    last = $form.find('input[name="last-name"]').val();
+    phone = $form.find('input[name="phone"]').val();
+    registration = $form.find('input[name="registration"]').val();
+    email = $form.find('input[name="email"]').val();
+    if (first === "") {
+      alert("Please enter a first name");
+      it.preventDefault();
+      return;
+    }
+    if (last === "") {
+      alert("Please enter a surname");
+      it.preventDefault();
+      return;
+    }
+    if (phone === "") {
+      alert("Please enter a contact phone number");
+      it.preventDefault();
+      return;
+    }
+    if (phone === "") {
+      alert("Please enter an email address");
+      it.preventDefault();
+      return;
+    }
     desc = [];
     amount = 0;
     for (key in ref$ = data) {
@@ -11117,10 +11142,21 @@ module.exports = function(selector){
       desc.push(val.desc);
       amount += val.total;
     }
-    email = $form.find('input[name="email"]').val();
+    if (amount === 0) {
+      alert("Please select a reservation");
+      it.preventDefault();
+      return;
+    }
+    reg = $form.find('input[name="registration"]').val();
+    str = join$.call(desc, ' & ') + ' Registration: ' + reg;
+    if (str.toLowerCase().indexOf('parking') !== -1 && reg === "") {
+      alert('Please enter a vehicle registration number');
+      it.preventDefault();
+      return;
+    }
     handler.open({
       name: 'Flouch Farm',
-      description: join$.call(desc, ' & '),
+      description: str,
       amount: amount,
       currency: 'GBP',
       email: email
@@ -11128,7 +11164,8 @@ module.exports = function(selector){
     return it.preventDefault();
   });
   return each(function(it){
-    var name, split, sku, $qty, $group, $total;
+    var desc, name, split, sku, $qty, $group, $total;
+    desc = $(it).attr('placeholder');
     name = $(it).attr('name');
     if (name) {
       split = split$.call(name, '-');
@@ -11147,11 +11184,16 @@ module.exports = function(selector){
             subTotal = qty * price * 100;
             displayAmount = "£" + subTotal / 100;
             $total.text(displayAmount);
-            return data[sku] = {
-              desc: qty + " " + sku,
-              qty: qty,
-              total: subTotal
-            };
+            if (qty === 0) {
+              delete data[desc];
+            }
+            if (qty !== 0) {
+              return data[desc] = {
+                desc: desc + "",
+                qty: qty,
+                total: subTotal
+              };
+            }
           }
         });
       }

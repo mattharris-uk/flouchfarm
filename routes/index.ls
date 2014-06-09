@@ -1,7 +1,7 @@
 global <<< require 'prelude-ls'
 
 module.exports =
-  <[home camping booking faq contact]> |>
+  <[home camping carparking booking faq contact]> |>
   map (-> [it, require "./#it"]) |> pairs-to-obj
 
 exports.moreinfo = (req, res) ->
