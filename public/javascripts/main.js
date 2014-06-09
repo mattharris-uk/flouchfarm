@@ -11100,7 +11100,7 @@ module.exports = function(selector){
   var $form, handler, data;
   $form = $(selector);
   handler = StripeCheckout.configure({
-    key: 'pk_test_MocqmE2ZqFETB1XeO0hugjIE',
+    key: 'pk_test_xLNoviZdjhwWVq82kMdtMhIu',
     image: '/images/IMG_3866_2.jpg',
     token: function(token, args){
       $('<input />').attr('type', 'hidden').attr('name', 'token').attr('value', token.id).appendTo($form);
@@ -11155,7 +11155,7 @@ module.exports = function(selector){
     reg = $form.find('input[name="registration"]').val();
     str = join$.call(desc, ' & ') + ' Registration: ' + reg;
     handler.open({
-      name: 'Flouch Farm',
+      name: 'flouchfarm.co.uk',
       description: str,
       amount: amount,
       currency: 'GBP',

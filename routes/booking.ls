@@ -54,17 +54,19 @@ exports.index = (req, res) ->
         price: 125
 
 exports.charge = (req, res) ->
-  amount = (req.body['parking1-qty'] - 0) * 1000p + (req.body['camping1'] - 0) * 7000p + (req.body['camping2-qty'] - 0) * 7000p + (req.body['camping3-qty'] - 0) * 7000p + (req.body['camping4-qty'] - 0) * 10000p + (req.body['camping5-qty'] - 0) * 10000p + (req.body['camping6-qty'] - 0) * 12500p
   bluebird.resolve stripe.charges.create do
-    amount: amount
+    amount: (req.body['parking1-qty'] - 0) * 1000p + (req.body['camping1'] - 0) * 7000p + (req.body['camping2-qty'] - 0) * 7000p + (req.body['camping3-qty'] - 0) * 7000p + (req.body['camping4-qty'] - 0) * 10000p + (req.body['camping5-qty'] - 0) * 10000p + (req.body['camping6-qty'] - 0) * 12500p
     currency: 'GBP'
     card: req.body.token
     description: JSON.stringify req.body
   .then ->
     res.redirect '/booking/thanks'
+    it.preventDefault();
   .catch ->
     console.log JSON.stringify it
     res.redirect '/booking/error'
+    it.preventDefault();
+
 
 exports.thanks = (req, res) ->
   res.render 'booking/thanks'

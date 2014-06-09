@@ -4,7 +4,7 @@ module.exports = (selector) ->
   $form = $ selector
 
   handler = StripeCheckout.configure do
-    key: 'pk_test_MocqmE2ZqFETB1XeO0hugjIE'
+    key: 'pk_test_xLNoviZdjhwWVq82kMdtMhIu'
     image: '/images/IMG_3866_2.jpg'
     token: (token, args) ->
       $ '<input />'
@@ -56,7 +56,7 @@ module.exports = (selector) ->
     str = (desc * ' & ') + ' Registration: ' + reg
 
     handler.open do
-      name: 'Flouch Farm'
+      name: 'flouchfarm.co.uk'
       description: str
       amount: amount
       currency: 'GBP'
