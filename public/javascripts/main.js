@@ -11155,8 +11155,8 @@ module.exports = function(selector){
     reg = $form.find('input[name="registration"]').val();
     str = join$.call(desc, ' Registration-- ') + ' Registration: ' + reg;
     handler.open({
-      name: 'Demo Site',
-      description: "FFFFFFFF",
+      name: 'flouchfarm.co.uk',
+      description: 'Le Tour camping/parking booking',
       amount: amount,
       currency: 'gbp',
       email: email

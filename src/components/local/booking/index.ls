@@ -56,8 +56,8 @@ module.exports = (selector) ->
     str = (desc * ' Registration-- ') + ' Registration: ' + reg
 
     handler.open do
-      name: 'Demo Site'
-      description: "FFFFFFFF"
+      name: 'flouchfarm.co.uk'
+      description: 'Le Tour camping/parking booking'
       amount: amount
       currency: 'gbp'
       email: email
