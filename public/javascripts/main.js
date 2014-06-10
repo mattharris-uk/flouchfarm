@@ -11100,7 +11100,7 @@ module.exports = function(selector){
   var $form, handler, data;
   $form = $(selector);
   handler = StripeCheckout.configure({
-    key: 'pk_test_xLNoviZdjhwWVq82kMdtMhIu',
+    key: 'pk_live_MMevxvlb7tBFdbyZoTmSR3i6',
     image: '/images/IMG_3866_2.jpg',
     token: function(token, args){
       $('<input />').attr('type', 'hidden').attr('name', 'token').attr('value', token.id).appendTo($form);
@@ -11130,7 +11130,7 @@ module.exports = function(selector){
       it.preventDefault();
       return;
     }
-    if (phone === "") {
+    if (email === "") {
       alert("Please enter an email address");
       it.preventDefault();
       return;
@@ -11153,12 +11153,12 @@ module.exports = function(selector){
       return;
     }
     reg = $form.find('input[name="registration"]').val();
-    str = join$.call(desc, ' & ') + ' Registration: ' + reg;
+    str = join$.call(desc, ' Registration-- ') + ' Registration: ' + reg;
     handler.open({
-      name: 'flouchfarm.co.uk',
-      description: str,
+      name: 'Demo Site',
+      description: "FFFFFFFF",
       amount: amount,
-      currency: 'GBP',
+      currency: 'gbp',
       email: email
     });
     return it.preventDefault();

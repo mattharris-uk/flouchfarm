@@ -4,7 +4,7 @@ module.exports = (selector) ->
   $form = $ selector
 
   handler = StripeCheckout.configure do
-    key: 'pk_test_xLNoviZdjhwWVq82kMdtMhIu'
+    key: 'pk_live_MMevxvlb7tBFdbyZoTmSR3i6'
     image: '/images/IMG_3866_2.jpg'
     token: (token, args) ->
       $ '<input />'
@@ -33,7 +33,7 @@ module.exports = (selector) ->
       alert("Please enter a contact phone number")
       it.preventDefault();
       return
-    if phone == ""
+    if email == ""
       alert("Please enter an email address")
       it.preventDefault();
       return
@@ -53,13 +53,13 @@ module.exports = (selector) ->
       return
 
     reg = $form.find 'input[name="registration"]' .val!
-    str = (desc * ' & ') + ' Registration: ' + reg
+    str = (desc * ' Registration-- ') + ' Registration: ' + reg
 
     handler.open do
-      name: 'flouchfarm.co.uk'
-      description: str
+      name: 'Demo Site'
+      description: "FFFFFFFF"
       amount: amount
-      currency: 'GBP'
+      currency: 'gbp'
       email: email
     it.preventDefault();
 
