@@ -2,10 +2,11 @@ window <<< require \prelude-ls
 
 module.exports = (selector) ->
   $form = $ selector
-
+  
   handler = StripeCheckout.configure do
-    key: 'pk_live_MMevxvlb7tBFdbyZoTmSR3i6'
+    key: 'pk_test_xLNoviZdjhwWVq82kMdtMhIu'
     image: '/images/IMG_3866_2.jpg'
+    email: $form.find 'input[name="email"]' .val!
     token: (token, args) ->
       $ '<input />'
       .attr 'type', 'hidden'

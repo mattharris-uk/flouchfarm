@@ -9,21 +9,29 @@ block content
           input.form-control(type=type, name=name, placeholder=label, value=value)
         fieldset
           legend Your details
-          .row
-            .form-inline.col-lg-6
-              .form-group
-                +field('text', 'first-name', 'First name')
-              .form-group
+          .row.form-group
+            .col-lg-6
+              +field('text', 'first-name', 'First name')
+            .col-lg-2.required * required
+          .row.form-group
+            .col-lg-6
                 +field('text', 'last-name', 'Last name')
+            .col-lg-2.required * required
           .row.form-group
             .col-lg-6
               +field('email', 'email', 'Email address')
+            .col-lg-2.required * required
           .row.form-group
             .col-lg-6
               +field('tel', 'phone', 'Contact telephone')
+            .col-lg-2.required * required
           .row.form-group
             .col-lg-6
-              +field('text', 'registration', 'Car Registration Number')
+              +field('text', 'registration', 'Car Registration Number(s)')
+            .col-lg-2.required * required
+          .row.col-lg-10.required-normal-1  Please Note:
+          .row.col-lg-10.required-normal-1  If booking multiple parking spaces or camping pitches please enter <b>ALL</b> registration plates. i.e. "X123ZXY, AB06XYZ, Y321WXY"
+          .row.col-lg-10.required-normal-2  <b>This is important</b> as this is how we will recognise you when you arrive.
         fieldset= var1
           legend Your Order
           each item in items
@@ -31,13 +39,13 @@ block content
               .col-lg-3.col-sm-5
                 +field('number', item.type + "-qty", item.description, 0)
               //- .help-block.col-lg-5 #{item.plural} at £#{item.price} per #{item.singular}
-              .help-block.col-lg-5 #{item.description}
-              .help-block.col-lg-1 £#{item.price}
+              .help-block.col-lg-5(style="color: white;") #{item.description}
+              .help-block.col-lg-1(style="color: white;") £#{item.price}
               .col-lg-1.sub-total
-                div(class="#{item.type}-total" data-price=item.price) £0.00
+                div(class="#{item.type}-total" data-price=item.price style="color: white; font-weight: bold; font-size: 16px;") £0.00
         .row
-          .col-lg-11.pay-now
-            button.btn.btn-default Pay with card
+          .col-lg-12.pay-now
+            button.btn.btn-primary.btn-lg.pay-button Pay with card
       .col-md-6
           img.col-md-8.col-md-offset-2.camping-image-1(src='/images/reservation.jpg', alt='...')
 
@@ -45,3 +53,6 @@ block scripts
   script(src="https://checkout.stripe.com/checkout.js")
   script.
     $(function(){require('booking')('form');});
+
+
+    //- zzzzzzzzzzzzzzzzzzzzzzzzzzzz

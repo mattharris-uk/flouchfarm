@@ -11100,8 +11100,9 @@ module.exports = function(selector){
   var $form, handler, data;
   $form = $(selector);
   handler = StripeCheckout.configure({
-    key: 'pk_live_MMevxvlb7tBFdbyZoTmSR3i6',
+    key: 'pk_test_xLNoviZdjhwWVq82kMdtMhIu',
     image: '/images/IMG_3866_2.jpg',
+    email: $form.find('input[name="email"]').val(),
     token: function(token, args){
       $('<input />').attr('type', 'hidden').attr('name', 'token').attr('value', token.id).appendTo($form);
       return $form.submit();
