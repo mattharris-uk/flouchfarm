@@ -14,43 +14,43 @@ exports.index = (req, res) ->
         singular: 'parking space'
         plural: 'parking spaces'
         detail: 'on Sunday 6th July'
-        description: '1 parking space on Sunday 6th July.'
+        description: '1 parking space on Sunday.'
         price: 10
       * type: 'camping1'
         singular: 'camping pitch'
         plural: 'camping pitches'
         detail: 'for 1 night (Friday 4th July)'
-        description: '1 camping pitch for 1 night (Friday 4th July)'
+        description: '1 camping pitch for 1 night (Friday)'
         price: 70
       * type: 'camping2'
         singular: 'camping pitch'
         plural: 'camping pitches'
         detail: 'for 1 night (Saturday 5th July)'
-        description: '1 camping pitch for 1 night (Saturday 5th July)'
+        description: '1 camping pitch for 1 night (Saturday)'
         price: 70
       * type: 'camping3'
         singular: 'camping pitch'
         plural: 'camping pitches'
         detail: 'for 1 night (Sunday 6th July)'
-        description: '1 camping pitch for 1 night (Sunday 6th July)'
+        description: '1 camping pitch for 1 night (Sunday)'
         price: 70
       * type: 'camping4'
         singular: 'camping pitch'
         plural: 'camping pitches'
         detail: 'for 2 nights (Friday 4th July to Saturday 5th July)'
-        description: '1 camping pitch for 2 nights (Friday 4th July to Saturday 5th July)'
+        description: '1 camping pitch for 2 nights (Friday and Saturday)'
         price: 100
       * type: 'camping5'
         singular: 'camping pitch'
         plural: 'camping pitches'
         detail: 'for 2 nights (Saturday 5th July to Sunday 6th July)'
-        description: '1 camping pitch for 2 nights (Saturday 5th July to Sunday 6th July)'
+        description: '1 camping pitch for 2 nights (Saturday and Sunday)'
         price: 100
       * type: 'camping6'
         singular: 'camping pitch'
         plural: 'camping pitches'
         detail: 'for 3 nights (Friday 4th July to Sunday 6th July)'
-        description: '1 camping pitch for 3 nights (Friday 4th July to Sunday 6th July)'
+        description: '1 camping pitch for 3 nights (Friday, Saturday and Sunday)'
         price: 125
 
 exports.charge = (req, res) ->
