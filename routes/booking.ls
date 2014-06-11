@@ -14,7 +14,7 @@ exports.index = (req, res) ->
         singular: 'parking space'
         plural: 'parking spaces'
         detail: 'on Sunday 6th July'
-        description: '1 parking space on Sunday 6th July'
+        description: '1 parking space on Sunday 6th July.'
         price: 10
       * type: 'camping1'
         singular: 'camping pitch'
