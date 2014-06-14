@@ -5,4 +5,29 @@
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
   </url>
+  <url>
+    <loc>http://www.flouchfarm.co.uk/booking</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>http://www.flouchfarm.co.uk/camping</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>http://www.flouchfarm.co.uk/carparking</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>http://www.flouchfarm.co.uk/contact-us</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>http://www.flouchfarm.co.uk/faq</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+  </url>
 </urlset>
