@@ -1,2 +1,2 @@
 User-agent: *
-Disallow: 
+sitemap: http://flouchfarm.co.uk/sitemap.xml
